@@ -1,8 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
-* Студент: [Артём Шелудешев](https://up.htmlacademy.ru/javascript/13/user/616111).
-* Наставник: `Денис Быков`.
-* Ссылка наставника: https://up.htmlacademy.ru/javascript/13/user/66426.
+* Студент: [Денис Быков] (https://up.htmlacademy.ru/javascript/13/user/66426).
+* Наставник: [Денис Быков] (https://up.htmlacademy.ru/javascript/13/user/66426).
 
 ---
 
