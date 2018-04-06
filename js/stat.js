@@ -10,7 +10,6 @@ window.renderStatistics = function(ctx, names, times) {
   var CLOUD_SHADOW_OFFSET = 10;
   var CLOUD_COLOR = '#ffffff';
   var TEXT_COLOR = '#666666';
-  var FONT_SIZE = 16;
   var FONT = '16px PT Mono';
   var LINE_HEIGHT = 18;
   var CLOUD_COLOR_SHADOW = 'rgba(0, 0, 0, 0.7)';
@@ -98,74 +97,4 @@ window.renderStatistics = function(ctx, names, times) {
   drawCloud();
   drawTitle(CLOUD_TITLE);
   drawCharts();
-
-  /*
-
-  var CLOUD_PROPERTIES = {
-    x: 100,
-    y: 10,
-    width: 420,
-    height: 270,
-    color: 'white',
-    colorShadow: 'rgba(0, 0, 0, 0.7)',
-    shadowOffset: 10,
-  };
-
-  var TEXT_PROPERTIES = {
-    fontSize: '16px',
-    fontFamily: 'PT Mono',
-    color: '#666666',
-    lineHeight: 25,
-    title: [
-      'Ура вы победили!',
-      'Список результатов'
-    ]
-  };
-
-  var HEIGHT_CHART = 150;
-  var WIDTH_COLUMN = 40;
-  var INTERVAL_COLUMN = 50;
-  var COLOR_COLUMN_MYSELF = 'rgba(255, 0, 0, 1)';
-
-  function drawCloud(properties) {
-    ctx.fillStyle = properties.colorShadow;
-    var posShadowX = properties.x + properties.shadowOffset;
-    var posShadowY = properties.y + properties.shadowOffset
-    ctx.fillRect(posShadowX, posShadowY, properties.width, properties.height);
-    ctx.fillStyle = properties.color;
-    ctx.fillRect(properties.x, properties.y, properties.width, properties.height);
-  }
-
-  function drawTitle(properties) {
-    var x = properties.x + properties.lineHeight;
-    for (var i = 0; i < properties.title.length; i++) {
-      var y = properties.y + (properties.lineHeight * (i + 1));
-      ctx.font = properties.fontSize + ' ' + properties.fontFamily;
-      ctx.fillStyle = properties.color;
-      console.log(x, y, properties.fontSize + ' ' + properties.fontFamily);
-      ctx.fillText(properties.content[i], x, y);
-    }
-  }
-
-  function drawPanel(propCloud, propText, names, times) {
-    drawCloud(propCloud);
-    propText.x = propCloud.x;
-    propText.y = propCloud.y;
-    drawTitle(propText);
-    for (var i = 0; names.length; i++) {
-      drawColumn(names[i], times[i], WIDTH_COLUMN, HEIGHT_CHART, COLOR_COLUMN_MYSELF);
-      break;
-    }
-  }
-
-  function drawColumn(name, time, x, y, width, height, color) {
-    ctx.fillStyle = color;
-    ctx.font = properties.fontSize + ' ' + properties.fontFamily;
-    ctx.fillStyle = properties.color;
-    ctx.fillRect(x, y, width, height);
-  }
-
-  drawPanel(CLOUD_PROPERTIES, TEXT_PROPERTIES, names, times);
-
-  */
 };
