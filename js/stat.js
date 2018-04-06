@@ -12,7 +12,7 @@ window.renderStatistics = function(ctx, names, times) {
   var TEXT_COLOR = '#666666';
   var FONT_SIZE = 16;
   var FONT = '16px PT Mono';
-  var LINE_HEIGHT = 20;
+  var LINE_HEIGHT = 18;
   var CLOUD_COLOR_SHADOW = 'rgba(0, 0, 0, 0.7)';
   var CLOUD_TITLE = ['Ура вы победили!', 'Список результатов'];
 
@@ -50,14 +50,16 @@ window.renderStatistics = function(ctx, names, times) {
   function drawCharts() {
     var beginPosX = CLOUD_X + OFFSET;
     for (var i = 0; i < names.length; i++) {
+      var max = getMaxArrayElement(times) || 1;
+      var delta = times[i] / max;
+      var colHeight = COLUMN_HEIGHT * delta;
       var posX = beginPosX + (i * COLUMN_INTERVAL);
-      var posY = CLOUD_HEIGHT - OFFSET - COLUMN_HEIGHT;
+      var posY = CLOUD_HEIGHT - OFFSET - colHeight;
       var width = COLUMN_WIDTH;
-      var height = COLUMN_HEIGHT;
       var color = names[i] === 'Вы' ? COLUMN_COLOR_DEFAULT : getRandomColor();
-      drawChart(posX, posY, width, height, color);
+      drawChart(posX, posY, width, colHeight, color);
       var posYNames = CLOUD_HEIGHT - OFFSET + OFFSET;
-      var posYtimes = CLOUD_HEIGHT - COLUMN_HEIGHT - 1.5 * OFFSET;
+      var posYtimes = CLOUD_HEIGHT - colHeight - 1.5 * OFFSET;
       var time = Math.round(times[i]);
       drawText(names[i], posX, posYNames, FONT, TEXT_COLOR);
       drawText(time, posX, posYtimes, FONT, TEXT_COLOR);
@@ -67,7 +69,6 @@ window.renderStatistics = function(ctx, names, times) {
   function drawChart(x, y, width, height, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height);
-    console.log(x, y, width, height);
   }
 
   function randomInteger(min, max) {
@@ -82,6 +83,16 @@ window.renderStatistics = function(ctx, names, times) {
       colors.push(randomInteger(0, 255));
     }
     return 'rgb(' + colors[0] + ', ' + colors[1] + ', ' + colors[2] + ')';
+  }
+
+  function getMaxArrayElement(arr) {
+    var max = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+      if (max <= arr[i]) {
+        max = arr[i];
+      }
+    }
+    return max;
   }
 
   drawCloud();
